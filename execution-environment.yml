@@ -1,0 +1,24 @@
+---
+version: 1
+
+build_arg_defaults:
+  EE_BASE_IMAGE: 'quay.io/ansible/ansible-runner:stable-2.12-latest'
+
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+  system: bindep.txt
+
+
+additional_build_steps:
+  prepend: |
+    RUN whoami
+    RUN cat /etc/os-release
+  append:
+    - RUN echo This image is brought you kindly by thedatabaseme
+    - RUN ls -la /etc
+    - RUN alternatives --set python /usr/bin/python3
+    - COPY --from=quay.io/ansible/receptor:devel /usr/bin/receptor /usr/bin/receptor
+    - RUN mkdir -p /var/run/receptor
+    - USER 1000
+    - RUN git lfs install
