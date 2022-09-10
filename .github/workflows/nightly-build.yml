@@ -3,8 +3,6 @@ name: Build nightly AWX EE image
 on:
   schedule:
     - cron: "* 2 * * *"
-  branches:
-    - develop
 
 jobs:
   build-ee-image:
@@ -12,6 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        ref: develop
 
       - name: Set up Python
         uses: actions/setup-python@v2
