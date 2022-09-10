@@ -1,9 +1,8 @@
 name: Build nightly AWX EE image
 
 on:
-#  schedule:
-#    - cron: "* 2 * * *"
-  workflow_dispatch
+  schedule:
+    - cron: "* 2 * * *"
 
 jobs:
   build-ee-image:
@@ -11,7 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        ref: develop
+        with:
+          ref: develop
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,17 +21,7 @@ jobs:
       - name: Install ansible-builder
         run: pip3 install ansible-builder
 
-#      - name: Docker meta
-#        id: meta
-#        uses: docker/metadata-action@v4
-#        with:
-#          images: ghcr.io/thedatabaseme/awx-ee
-#          flavor: latest=false
-#          tags: |
-#            type=schedule,pattern=nightly
-
       - name: Login to image repository
-        if: github.ref_type == 'tag'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -48,11 +38,3 @@ jobs:
       - name: Push EE image
         run: |
           docker push ghcr.io/thedatabaseme/awx-ee:nightly
-
-#      - name: Build and push
-#        uses: docker/build-push-action@v3
-#        with:
-#          context: .
-#          file: docker/dockerfile/hello-world/Dockerfile
-#          push: true
-#          tags: ${{ steps.meta.outputs.tags }}
