@@ -28,6 +28,21 @@ ansible-builder build --tag thedatabaseme/awx-ee:0.0.1 --container-runtime docke
 If you run podman as your container runtime on your system, you can leave out the
 `--container-runtime` option cause podman is the default CR.
 
+## Local testing
+
+After building, you may want to test your locally build image. You can do so by creating
+a container and shelling into it:
+
+```
+docker run -it --rm thedatabaseme/awx-ee /bin/bash
+```
+
+You can check for the installed collections and versions then:
+
+```
+ansible-galaxy collection list
+```
+
 # Ansible Collections included in this image
 
 The following collections are included in this EE image. I plan to pin
