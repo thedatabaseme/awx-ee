@@ -1,8 +1,9 @@
 name: Build nightly AWX EE image
 
 on:
-  schedule:
-    - cron: "* 2 * * *"
+#  schedule:
+#    - cron: "* 2 * * *"
+  workflow_dispatch
 
 jobs:
   build-ee-image:
