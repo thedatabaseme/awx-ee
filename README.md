@@ -4,6 +4,8 @@ This repository contains building instructions for a self-build AWX execution en
 To find detailed instructions and information about why to use your own build EE might
 be a good idea, you can find a blog article of me [here](https://thedatabaseme.de/2022/09/09/self-build-awx-execution-environment/).
 
+[![Build nightly AWX EE image](https://github.com/thedatabaseme/awx-ee/actions/workflows/nightly-build.yml/badge.svg?branch=develop)](https://github.com/thedatabaseme/awx-ee/actions/workflows/nightly-build.yml)
+
 # Build instructions
 
 To build this execution environment image by yourself (you can also use the image that is
@@ -52,3 +54,4 @@ redhatinsights.insights
 
 
 Most of code I (re)used from the official AWX EE project [here](https://github.com/ansible/awx-ee). So shoutout to them as well.
+
