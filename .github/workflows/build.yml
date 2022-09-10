@@ -1,4 +1,4 @@
-name: Deploy Hello World
+name: Build AWX EE image
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/thedatabaseme/awx-ee
-          flavor: latest=true
+          flavor: latest=false
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -49,11 +49,11 @@ jobs:
         run: |
           ansible-builder build \
           --tag ghcr.io/thedatabaseme/awx-ee:latest \
-          --tag ghcr.io/thedatabaseme/awx-ee:${{ steps.meta.outputs.tags }} \
+          --tag ${{ steps.meta.outputs.tags }} \
           --container-runtime docker \
           -f execution-environment.yml
 
       - name: Push EE image
         if: github.ref_type == 'tag'
         run: |
-          docker push ghcr.io/thedatabaseme/awx-ee:${{ steps.meta.outputs.tags }}
+          docker push ${{ steps.meta.outputs.tags }}
