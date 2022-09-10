@@ -42,9 +42,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
-      - name: debug
-        run: echo ${{ steps.meta.outputs.tags }}
-
       - name: Build EE image
         run: |
           ansible-builder build \
