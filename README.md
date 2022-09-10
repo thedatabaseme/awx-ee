@@ -1,12 +1,10 @@
 # thedatabaseme AWX EE
----
 
 This repository contains building instructions for a self-build AWX execution environment.
 To find detailed instructions and information about why to use your own build EE might
 be a good idea, you can find a blog article of me [here](https://thedatabaseme.de/2022/09/09/self-build-awx-execution-environment/).
 
 # Build instructions
----
 
 To build this execution environment image by yourself (you can also use the image that is
 linked to this repository), follow the steps below.
@@ -28,7 +26,29 @@ ansible-builder build --tag thedatabaseme/awx-ee:0.0.1 --container-runtime docke
 If you run podman as your container runtime on your system, you can leave out the
 `--container-runtime` option cause podman is the default CR.
 
+# Ansible Collections included in this image
+
+The following collections are included in this EE image. I plan to pin
+the versions of them to give more stability to this build:
+
+```
+awx.awx
+azure.azcollection
+amazon.aws
+theforeman.foreman
+google.cloud
+openstack.cloud
+community.general
+community.vmware
+community.docker
+ovirt.ovirt
+kubernetes.core
+ansible.posix
+ansible.windows
+redhatinsights.insights
+```
+
 # Disclaimer
----
+
 
 Most of code I (re)used from the official AWX EE project [here](https://github.com/ansible/awx-ee). So shoutout to them as well.
