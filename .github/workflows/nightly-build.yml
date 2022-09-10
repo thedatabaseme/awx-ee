@@ -32,7 +32,6 @@ jobs:
 #            type=schedule,pattern=nightly
 
       - name: Login to image repository
-        if: github.ref_type == 'tag'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
