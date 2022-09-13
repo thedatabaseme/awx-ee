@@ -50,6 +50,16 @@ jobs:
           --container-runtime docker \
           -f execution-environment.yml
 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.7.1
+        with:
+          image-ref: 'ghcr.io/thedatabaseme/awx-ee:latest'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
       - name: Push EE image
         if: github.ref_type == 'tag'
         run: |
