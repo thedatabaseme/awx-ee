@@ -33,7 +33,8 @@ jobs:
           ansible-builder build \
           --tag ghcr.io/thedatabaseme/awx-ee:nightly \
           --container-runtime docker \
-          -f execution-environment.yml
+          -f execution-environment.yml \
+          -v 3
 
       - name: Push EE image
         run: |
