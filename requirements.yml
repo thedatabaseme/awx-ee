@@ -7,7 +7,7 @@ collections:
   - name: google.cloud
   - name: openstack.cloud
   - name: community.general
-  - name: community.vmware
+#  - name: community.vmware
   - name: community.docker
   - name: ovirt.ovirt
   - name: kubernetes.core
