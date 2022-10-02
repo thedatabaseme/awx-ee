@@ -2,7 +2,7 @@ name: Build nightly AWX EE image
 
 on:
   schedule:
-    - cron: "* 2 * * *"
+    - cron: "0 2 * * 6"
 
 jobs:
   build-ee-image:
