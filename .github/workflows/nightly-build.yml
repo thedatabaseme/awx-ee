@@ -1,10 +1,8 @@
 name: Build nightly AWX EE image
 
 on:
-  push:
-    branches: develop
   schedule:
-    - cron: "0 2 * * 6"
+    - cron: "0 2 * * *"
 
 jobs:
   build-ee-image:
