@@ -2,7 +2,7 @@ name: Build nightly AWX EE image
 
 on:
   schedule:
-    - cron: "* 2 * * *"
+    - cron: "0 2 * * 6"
 
 jobs:
   build-ee-image:
@@ -33,7 +33,8 @@ jobs:
           ansible-builder build \
           --tag ghcr.io/thedatabaseme/awx-ee:nightly \
           --container-runtime docker \
-          -f execution-environment.yml
+          -f execution-environment.yml \
+          -v 3
 
       - name: Push EE image
         run: |
